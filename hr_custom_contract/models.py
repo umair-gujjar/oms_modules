@@ -18,6 +18,9 @@ class hr_custom_employee(models.Model):
 	s_dob = fields.Date('Date of Birth')
 	s_contact = fields.Char('Spouse Contact')
 	s_cnic = fields.Char('CNIC #')
+	first_email = fields.Char('Primary Email')
+	second_email = fields.Char('Secondary Email')
+	email_password = fields.Char('Password')
 
 	
 
