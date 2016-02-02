@@ -28,10 +28,10 @@
             <field name="inherit_id" ref="hr.view_employee_form"/>
             <field name="type">form</field>
             <field name="arch" type="xml">
-		<xpath expr="//field[@name='work_location']" position="after">
+                <xpath expr="//field[@name='work_location']" position="after">
                     <field name="show_engineer"/>
                     <field name="engineer" attrs="{'invisible':[('show_engineer', '!=', True)]}" />
-		    <field name="blood_group"/>
+                    <field name="blood_group"/>
                 </xpath>
                 <xpath expr="//page[@string='HR Settings']" position="after">
                     <page string="Family Information" name="family_information">
@@ -76,6 +76,40 @@
                             <group name="group_right">
                                 <field name="second_email"/>
                             </group>
+                        </group>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+
+       <record id="hr_employee_custom_education_view_form" model="ir.ui.view">
+            <field name="name">hr_employee_custom_education_view_form</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_employee_form"/>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <xpath expr="//page[@string='HR Settings']" position="after">
+                    <page string="Employee Education" name="employee_education">
+                        <group string='Summary of Education/Qualification' name="group_left">
+                            <field name="employee_education_id" nolabel='1'>
+                                <tree editable="bottom">
+                                    <field name="qualification"/>
+                                    <field name="passing_year"/>
+                                    <field name="institue"/>
+                                </tree>
+                            </field>
+                        </group>
+                        <group string='Summary of Certification/Trainings' name="group_right">
+                            <field name="employee_experience_id" nolabel='1'>
+                                <tree editable="bottom">
+                                    <field name="certification"/>
+                                    <field name="year"/>
+                                    <field name="conducting_institute"/>
+                                </tree>
+                            </field>
+                        </group>
+                        <group>
+                            <field name="total_experience"/>
                         </group>
                     </page>
                 </xpath>
