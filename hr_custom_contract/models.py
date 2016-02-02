@@ -24,9 +24,10 @@ class hr_custom_employee(models.Model):
 	first_email = fields.Char('Primary Email')
 	second_email = fields.Char('Secondary Email')
 	email_password = fields.Char('Password')
-	employee_education_id = fields.One2many('employee_qualification','employee_qualification_id',string='Details')
-	employee_experience_id = fields.One2many('employee_certification','employee_certification_id',string='Details')
-	total_experience = fields.Integer('Total Experience')
+	employee_qualify_id = fields.One2many('employee_qualification','employee_qualification_id',string='Details')
+	employee_certify_id = fields.One2many('employee_certification','employee_certification_id',string='Details')
+	total_experience = fields.Integer('Total Experience  :  Years:')
+	employee_expert_id = fields.One2many('employee_experience','employee_experience_id',string='Details')
 
 	
 
@@ -42,16 +43,25 @@ class family_info(models.Model):
 
 class employee_qualification(models.Model):
 	_name = 'employee_qualification'
-	qualification = fields.Char('Kid Name')
-	passing_year = fields.Char('Sex')
-	institue = fields.Date('Date of Birth')
+	qualification = fields.Char('Qualification')
+	passing_year = fields.Char('Passing Year')
+	institue = fields.Date('Institue')
 	employee_qualification_id = fields.Many2one('hr.employee','Employee Qualification')
 
 
 
 class employee_certification(models.Model):
 	_name = 'employee_certification'
-	certification = fields.Char('Kid Name')
-	year = fields.Char('Sex')
-	conducting_institute = fields.Date('Date of Birth')
+	certification = fields.Char('Certification')
+	year = fields.Char('Year')
+	conducting_institute = fields.Date('Conducting Institute')
 	employee_certification_id = fields.Many2one('hr.employee','Employee Certification')
+
+
+class employee_experience(models.Model):
+	_name = 'employee_experience'
+	company = fields.Char('Company')
+	designation = fields.Char('Designation')
+	experience_from = fields.Date('Experience From')
+	experience_to = fields.Date('Experience To')
+	employee_experience_id = fields.Many2one('hr.employee','Employee Experience')
