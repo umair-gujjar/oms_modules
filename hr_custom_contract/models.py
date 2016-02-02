@@ -11,6 +11,21 @@ class hr_custom_contract(models.Model):
 	sr_other = fields.Float('SR/other')
 
 class hr_custom_employee(models.Model):
-	_name = 'hr.custom.employee'
+	#_name = 'hr.custom.employee'
 	_inherit = 'hr.employee'
+	family_id = fields.One2many('family_info','family_info_id',string='Details')
+	spouse_name = fields.Char('Spouse Name')
+	s_dob = fields.Date('Date of Birth')
+	s_contact = fields.Char('Spouse Contact')
+	s_cnic = fields.Char('CNIC #')
+
 	
+
+
+class family_info(models.Model):
+    _name = 'family_info'
+    kid_name = fields.Char('Kid Name')
+    sex = fields.Char('Sex')
+    dob = fields.Date('Date of Birth')
+    age = fields.Integer('Age')
+    family_info_id = fields.Many2one('hr.employee','Family Information')
