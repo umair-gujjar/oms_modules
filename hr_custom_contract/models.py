@@ -29,6 +29,7 @@ class hr_custom_employee(models.Model):
 	total_experience = fields.Integer('Total Experience  :  Years:')
 	employee_expert_id = fields.One2many('employee_experience','employee_experience_id',string='Details')
 
+
 	
 
 
@@ -64,4 +65,5 @@ class employee_experience(models.Model):
 	designation = fields.Char('Designation')
 	experience_from = fields.Date('Experience From')
 	experience_to = fields.Date('Experience To')
+	total_experience_diff = fields.Integer('Total')
 	employee_experience_id = fields.Many2one('hr.employee','Employee Experience')

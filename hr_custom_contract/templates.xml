@@ -131,6 +131,7 @@
                                     <field name="designation"/>
                                     <field name="experience_from"/>
                                     <field name="experience_to"/>
+                                    <field name="total_experience_diff"/>
                                 </tree>
                             </field>
                         </group>
