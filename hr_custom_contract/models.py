@@ -9,6 +9,7 @@ class hr_custom_contract(models.Model):
 	fuel_other = fields.Float('Fuel/others')
 	overtime = fields.Float('Overtime')
 	sr_other = fields.Float('SR/other')
+	employee_number = fields.Char('Employee ID')
 
 class hr_custom_employee(models.Model):
 	#_name = 'hr.custom.employee'
@@ -28,6 +29,15 @@ class hr_custom_employee(models.Model):
 	employee_certify_id = fields.One2many('employee_certification','employee_certification_id',string='Details')
 	total_experience = fields.Integer('Total Experience  :  Years:')
 	employee_expert_id = fields.One2many('employee_experience','employee_experience_id',string='Details')
+	service_period = fields.Char('Service Period')
+	last_working_day = fields.Char('Last Working Day')
+	accounts_and_finance = fields.Char('Accounts & Finance')
+	administration_and_hrm = fields.Char('Administration & HRM')
+	it_dept = fields.Char('IT Department')
+	site_settlement = fields.Char('Site Settlement')
+	hse_dept = fields.Char('HSE Department')
+	security_settlement = fields.Char('Security Settlement')
+	others_if_any = fields.Char('Others (if any)')
 
 
 	
@@ -67,3 +77,5 @@ class employee_experience(models.Model):
 	experience_to = fields.Date('Experience To')
 	total_experience_diff = fields.Integer('Total')
 	employee_experience_id = fields.Many2one('hr.employee','Employee Experience')
+
+

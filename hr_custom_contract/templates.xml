@@ -20,6 +20,9 @@
                         </group>
                     </page>
                 </xpath>
+                <xpath expr="//field[@name='type_id']" position="after">
+                    <field name="employee_number"/>
+                </xpath>
             </field>
         </record>
        <record id="hr_employee_custom_view_form" model="ir.ui.view">
@@ -134,6 +137,34 @@
                                     <field name="total_experience_diff"/>
                                 </tree>
                             </field>
+                        </group>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+
+       <record id="hr_employee_custom_clearance_view_form" model="ir.ui.view">
+            <field name="name">hr_employee_custom_clearance_view_form</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_employee_form"/>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <xpath expr="//page[@string='HR Settings']" position="after">
+                    <page string="Clearance" name="employee_Clearance">
+                        <group name="group_top" string='Employee Clearance Form'>
+                            <group name="group_left">
+                                <field name="service_period"/>
+                                <field name="accounts_and_finance"/>
+                                <field name="it_dept"/>
+                                <field name="hse_dept"/>
+                                <field name="others_if_any"/>
+                            </group>
+                            <group name="group_left">
+                                <field name="last_working_day"/>
+                                <field name="administration_and_hrm"/>
+                                <field name="site_settlement"/>
+                                <field name="security_settlement"/>
+                            </group>
                         </group>
                     </page>
                 </xpath>
