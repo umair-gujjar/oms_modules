@@ -1,7 +1,10 @@
 # -*- coding: utf-8 -*-
 
 from openerp import models, fields, api
-
+import datetime
+from datetime import date, datetime, timedelta
+import time
+import math
 class qualification_list(models.Model):
     _name = 'qualification.list'
 
@@ -92,12 +95,22 @@ class employee_certification(models.Model):
 
 class employee_experience(models.Model):
 	_name = 'employee_experience'
+	@api.onchange('experience_from','experience_to')
+	def experince_diff(self,):
+		s_experience_from = self.experience_from
+		s_experience_to = self.experience_to
+		if s_experience_from and s_experience_to:
+ 			dt_s_obj = datetime.strptime(s_experience_from,"%Y-%m-%d")
+ 			dt_e_obj = datetime.strptime(s_experience_to,"%Y-%m-%d")
+ 			timedelta = dt_e_obj - dt_s_obj
+ 			days = timedelta.days
+ 			months = days/30.43
+ 			years = days/365
+ 			self.total_experience_diff = years 
+
 	company = fields.Char('Company')
 	designation = fields.Char('Designation')
 	experience_from = fields.Date('Experience From')
 	experience_to = fields.Date('Experience To')
-	total_experience_diff = fields.Integer('Total')
+	total_experience_diff = fields.Char('Total')
 	employee_experience_id = fields.Many2one('hr.employee','Employee Experience')
-
-
-
