@@ -166,7 +166,7 @@
                     <field name="blood_group"/>
                 </xpath>
                 <xpath expr="//page[@string='HR Settings']" position="after">
-                    <page string="Family Information" name="family_information">
+                    <page string="Family Information" name="family_information" attrs="{'invisible':[('marital','not in',['single','married','widower','divorced'])]}">
                         <group name="group_top">
                             <group name="group_left">
                                 <field name="spouse_name"/>
