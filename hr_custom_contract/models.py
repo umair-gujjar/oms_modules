@@ -9,3 +9,8 @@ class hr_custom_contract(models.Model):
 	fuel_other = fields.Float('Fuel/others')
 	overtime = fields.Float('Overtime')
 	sr_other = fields.Float('SR/other')
+
+class hr_custom_employee(models.Model):
+	_name = 'hr.custom.employee'
+	_inherit = 'hr.employee'
+	
