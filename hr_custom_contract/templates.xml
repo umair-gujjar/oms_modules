@@ -1,5 +1,134 @@
 <openerp>
     <data>
+        <!--quaification list model view started -->
+        <record id="view_qualification_list_form" model="ir.ui.view">
+            <field name="name">view_qualification_list_form</field>
+            <field name="model">qualification.list</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                
+                <form string="Qualification">
+                    <sheet>
+                        <group name="group_top">
+                            <group name="group_left">
+                                <field name="name"/>
+                            </group>
+                            <group name="group_right">
+                                <field name="list_code"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_qualification_list_tree" model="ir.ui.view">
+            <field name="name">view_qualification_list_tree</field>
+            <field name="model">qualification.list</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="Qualification">
+                    <field name="name"/>
+                    <field name="list_code"/>
+                </tree>              
+            </field>
+        </record>
+
+       <record model="ir.actions.act_window" id="action_qualification_list">
+            <field name="name">Qualification</field>
+            <field name="res_model">qualification.list</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <menuitem action="action_qualification_list" id="first_action_qualification_list" name="Qualification" parent="hr.menu_hr_configuration" sequence="13" />
+        <!--quaification list model view End -->
+
+        <!--institute list model view started -->
+        <record id="view_institute_list_form" model="ir.ui.view">
+            <field name="name">view_institute_list_form</field>
+            <field name="model">institute.list</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                
+                <form string="Institution">
+                    <sheet>
+                        <group name="group_top">
+                            <group name="group_left">
+                                <field name="name"/>
+                            </group>
+                            <group name="group_right">
+                                <field name="list_code"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_institute_list_tree" model="ir.ui.view">
+            <field name="name">view_institute_list_tree</field>
+            <field name="model">institute.list</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="Institution">
+                    <field name="name"/>
+                    <field name="list_code"/>
+                </tree>              
+            </field>
+        </record>
+
+       <record model="ir.actions.act_window" id="action_institute_list">
+            <field name="name">Institution</field>
+            <field name="res_model">institute.list</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <menuitem action="action_institute_list" id="first_action_institute_list" name="Institution" parent="hr.menu_hr_configuration" sequence="14" />
+        <!--institute list model view end -->
+
+        <!--year list model view started -->
+        <record id="view_year_list_form" model="ir.ui.view">
+            <field name="name">view_year_list_form</field>
+            <field name="model">year.list</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                
+                <form string="Year">
+                    <sheet>
+                        <group name="group_top">
+                            <group name="group_left">
+                                <field name="name"/>
+                            </group>
+                            <group name="group_right">
+                                <field name="list_code"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_year_list_tree" model="ir.ui.view">
+            <field name="name">view_year_list_tree</field>
+            <field name="model">year.list</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="Year">
+                    <field name="name"/>
+                    <field name="list_code"/>
+                </tree>              
+            </field>
+        </record>
+
+       <record model="ir.actions.act_window" id="action_year_list">
+            <field name="name">Year</field>
+            <field name="res_model">year.list</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <menuitem action="action_year_list" id="first_year_qualification_list" name="Year" parent="hr.menu_hr_configuration" sequence="15" />
+        <!--year list model view started -->
+        
        <record id="hr_contract_custom_view_form" model="ir.ui.view">
             <field name="name">hr_contract_custom_view_form</field>
             <field name="model">hr.contract</field>
@@ -170,6 +299,16 @@
                 </xpath>
             </field>
         </record>
+
+        <record model="ir.actions.act_window" id="action_job_title">
+            <field name="name">Job Title</field>
+            <field name="res_model">hr.job</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <menuitem action="action_job_title" id="first_menu_pak_cites" name="Job Title" parent="hr.menu_hr_configuration" sequence="12" />
+
+
 
     </data>
 </openerp>

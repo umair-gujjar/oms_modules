@@ -1,6 +1,27 @@
 # -*- coding: utf-8 -*-
 
 from openerp import models, fields, api
+
+class qualification_list(models.Model):
+    _name = 'qualification.list'
+
+    name = fields.Char(string='Name of Degree')
+    list_code = fields.Integer(string='Qualification Code')
+
+class institute_list(models.Model):
+    _name = 'institute.list'
+
+    name = fields.Char(string='Name of Institute')
+    list_code = fields.Integer(string='Institute Code')
+
+class year_list(models.Model):
+    _name = 'year.list'
+
+    name = fields.Char(string='Create Year')
+    list_code = fields.Integer(string='Year Code')
+
+
+
 class hr_custom_contract(models.Model):
 	_inherit = 'hr.contract'
 	bonus = fields.Float('Bonus')
@@ -54,9 +75,9 @@ class family_info(models.Model):
 
 class employee_qualification(models.Model):
 	_name = 'employee_qualification'
-	qualification = fields.Char('Qualification')
-	passing_year = fields.Char('Passing Year')
-	institue = fields.Date('Institue')
+	qualification = fields.Many2one('qualification.list','Qualification')
+	passing_year = fields.Many2one('year.list','Passing Year')
+	institue = fields.Many2one('institute.list','Institue')
 	employee_qualification_id = fields.Many2one('hr.employee','Employee Qualification')
 
 
@@ -64,8 +85,8 @@ class employee_qualification(models.Model):
 class employee_certification(models.Model):
 	_name = 'employee_certification'
 	certification = fields.Char('Certification')
-	year = fields.Char('Year')
-	conducting_institute = fields.Date('Conducting Institute')
+	year = fields.Many2one('year.list','Year')
+	conducting_institute = fields.Many2one('institute.list','Conducting Institute')
 	employee_certification_id = fields.Many2one('hr.employee','Employee Certification')
 
 
@@ -77,5 +98,6 @@ class employee_experience(models.Model):
 	experience_to = fields.Date('Experience To')
 	total_experience_diff = fields.Integer('Total')
 	employee_experience_id = fields.Many2one('hr.employee','Employee Experience')
+
 
 
