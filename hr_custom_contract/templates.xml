@@ -59,5 +59,28 @@
                 </xpath>
             </field>
         </record>
+
+       <record id="hr_employee_custom_email_view_form" model="ir.ui.view">
+            <field name="name">hr_employee_custom_email_view_form</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_employee_form"/>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <xpath expr="//page[@string='HR Settings']" position="after">
+                    <page string="Email Set up" name="email_set_up">
+                        <group string='Desired E-Mail ID' name="group_top">
+                            <group name="group_left">
+                                <field name="first_email"/>
+                                <field name="email_password"/>
+                            </group>
+                            <group name="group_right">
+                                <field name="second_email"/>
+                            </group>
+                        </group>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+
     </data>
 </openerp>
