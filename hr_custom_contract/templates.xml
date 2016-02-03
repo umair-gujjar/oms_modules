@@ -10,18 +10,51 @@
                     <field name="bonus"/>
                     <field name="loan_and_advance"/>
                 </xpath>
-		<xpath expr="//page[@string='Work Permit']" position="after">
-	    		<page string="Reimbursement" name="reimbbursment">
-				<group>
-                    			<field name="medical_opd"/>
-					<field name="fuel_other"/>
-                    			<field name="overtime"/>
-					<field name="sr_other"/>
-				</group>
-	    		</page>
-	    	</xpath>
+                <xpath expr="//page[@string='Work Permit']" position="after">
+                    <page string="Reimbursement" name="reimbbursment">
+                        <group>
+                            <field name="medical_opd"/>
+                            <field name="fuel_other"/>
+                            <field name="overtime"/>
+                            <field name="sr_other"/>
+                        </group>
+                    </page>
+                </xpath>
             </field>
         </record>
+       <record id="hr_employee_custom_view_form" model="ir.ui.view">
+            <field name="name">hr_employee_custom_view_form</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_employee_form"/>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <xpath expr="//page[@string='HR Settings']" position="after">
+                    <page string="Family Information" name="family_information">
+                        <group name="group_top">
+                            <group name="group_left">
+                                <field name="spouse_name"/>
+                                <field name="s_dob"/>
+                            </group>
+                            <group name="group_left">
+                                <field name="s_contact"/>
+                                <field name="s_cnic"/>
+                            </group>
+                        </group>
+                        <group string='Kids Information'>
+                            <field name="family_id" nolabel='1'>
+                                <tree editable="bottom">
+                                    <field name="kid_name"/>
+                                    <field name="sex"/>
+                                    <field name="dob"/>
+                                    <field name="age"/>
+                                </tree>
+                            </field>
+                        </group>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+<<<<<<< HEAD
 	
 	<record id="hr_employee_custom_view_form" model="ir.ui.view">
             <field name="name">hr_employee_contract_custom_view_form</field>
@@ -36,5 +69,9 @@
                 </xpath>
             </field>
         </record>
+=======
+
+
+>>>>>>> e940c95a0b3b071770125acc2c0208fde1719b74
     </data>
 </openerp>
