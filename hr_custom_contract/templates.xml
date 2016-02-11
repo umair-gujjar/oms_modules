@@ -161,8 +161,6 @@
             <field name="type">form</field>
             <field name="arch" type="xml">
                 <xpath expr="//field[@name='work_location']" position="after">
-                    <field name="show_engineer"/>
-                    <field name="engineer" attrs="{'invisible':[('show_engineer', '!=', True)]}" />
                     <field name="blood_group"/>
                 </xpath>
                 <xpath expr="//page[@string='HR Settings']" position="after">
@@ -222,6 +220,10 @@
             <field name="arch" type="xml">
                 <xpath expr="//page[@string='HR Settings']" position="after">
                     <page string="Education" name="employee_education">
+                        <group>
+                        <field name="show_engineer"/>
+                        <field name="engineer" attrs="{'invisible':[('show_engineer', '!=', True)]}"/>
+                    </group>
                         <group string='Summary of Education/Qualification' name="group_left">
                             <field name="employee_qualify_id" nolabel='1'>
                                 <tree editable="bottom">
@@ -299,6 +301,70 @@
                 </xpath>
             </field>
         </record>
+       <record id="hr_employee_change_field_email_view_form" model="ir.ui.view">
+            <field name="name">hr_employee_change_field_email_view_form</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_employee_form"/>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='otherid']" position="replace">
+                    <field name="otherid" string="Employee Code"/>
+                </xpath>
+                <xpath expr="//field[@name='identification_id']" position="replace">
+                    <field name="identification_id" string="CNIC No"/>
+                </xpath>
+                <xpath expr="//field[@name='identification_id']" position="after">
+                    <field name="validation_date"/>
+                </xpath>
+            </field>
+        </record>
+
+       <record id="hr_employee_health_insurance_form" model="ir.ui.view">
+            <field name="name">hr_employee_health_insurance_view_form</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_employee_form"/>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='parent_id']" position="replace">
+                    <field name="parent_id" string="Team Leader"/>
+                </xpath>
+                <xpath expr="//field[@name='coach_id']" position="attributes">
+                    <attribute name="attrs">{'invisible': True}</attribute>
+                </xpath>
+                <xpath expr="//field[@name='parent_id']" position="before">
+                    <field name="cost_centre" string="Cost Centre"/>
+                </xpath>
+                <xpath expr="//field[@name='work_location']" position="attributes">
+                    <attribute name="attrs">{'invisible': True}</attribute>
+                </xpath>
+                <xpath expr="//group[@string='Active']" position="before">
+                    <group string="Insurance">
+                        <field name="health_insurance" string="Health Insurance"/>
+                        <field name="life_insurance" string="Life Insurance"/>
+                    </group>
+                </xpath>
+
+            </field>
+        </record>
+
+       <record id="hr_employee_extra_field_form" model="ir.ui.view">
+            <field name="name">hr_employee_extra_field_form</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr_contract.hr_hr_employee_view_form2"/>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='manager']" position="replace">
+                    <field name="manager" string="Is a Team Leader?"/>
+                </xpath>
+                <xpath expr="//field[@name='medic_exam']" position="before">
+                        <field name="provident_fund" string="Provident Fund"/>
+                        <field name="mobile_phone" string="Mobile Phone"/>
+                        <field name="laptop" string="Laptop"/>
+                        <field name="company_cell_number" string="Company Mobile No"/>
+                </xpath>
+            </field>
+        </record>
+
 
         <record model="ir.actions.act_window" id="action_job_title">
             <field name="name">Job Title</field>

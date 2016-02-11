@@ -38,7 +38,7 @@ class hr_custom_contract(models.Model):
 class hr_custom_employee(models.Model):
 	#_name = 'hr.custom.employee'
 	_inherit = 'hr.employee'
-	show_engineer = fields.Boolean('Is a Engineer ?')
+	show_engineer = fields.Boolean('Is an Engineer?')
 	engineer = fields.Char('PEC #', size=64)
 	blood_group = fields.Char('Blood Group', size=10)
 	family_id = fields.One2many('family_info','family_info_id',string='Details')
@@ -62,6 +62,19 @@ class hr_custom_employee(models.Model):
 	hse_dept = fields.Char('HSE Department')
 	security_settlement = fields.Char('Security Settlement')
 	others_if_any = fields.Char('Others (if any)')
+	validation_date = fields.Date('CNIC Validity')
+	health_insurance = fields.Selection([
+            ('a', 'A'),
+            ('b', 'B'),
+            ('c', 'C'),
+            ('d', 'D'),
+            ],)
+	life_insurance = fields.Boolean("Life Insurance")
+	provident_fund =fields.Boolean("Provident Fund")
+	mobile_phone = fields.Char("Mobile")
+	laptop = fields.Char("Laptop")
+	company_cell_number = fields.Char("Number")
+	cost_centre = fields.Char("Centre")
 
 
 	
