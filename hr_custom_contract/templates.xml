@@ -1,11 +1,15 @@
 <openerp>
     <data>
         <!-- Adds all assets in Odoo -->
-        <template id="assets_backend" name="static_resources_demo assets" inherit_id="web.assets_backend">
+
+
+
+        <!-- Commented as css file isnt loading on every system -->
+        <!--<template id="assets_backend" name="static_resources_demo assets" inherit_id="web.assets_backend">
             <xpath expr="." position="inside">
                 <link rel="stylesheet" href="/hr_custom_contract/static/css/following_button.css"/>
             </xpath>
-        </template>
+        </template> -->
 
 
         <!--quaification list model view started -->
@@ -153,7 +157,23 @@
                             <field name="medical_opd"/>
                             <field name="fuel_other"/>
                             <field name="overtime"/>
-                            <field name="sr_other"/>
+                            <field name="sr"/>                      
+                            <field name="mobile_expenses"/>
+                            <field name="other"/>
+                        </group>
+                    </page>
+                </xpath>
+                <xpath expr="//page[@string='Reimbursement']" position="after">
+                    <page string="Deductions" name="deductions">
+                        <group>
+                            <field name="p_tax"/>
+                            <field name="sr_fund_ded"/>
+                            <field name="eobi"/>
+                            <field name="loan_and_advance"/>
+                            <field name="food"/>
+                            <field name="v_running"/>
+                            <field name="other_ded"/>
+                            
                         </group>
                     </page>
                 </xpath>

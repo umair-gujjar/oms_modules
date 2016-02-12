@@ -32,8 +32,18 @@ class hr_custom_contract(models.Model):
 	medical_opd = fields.Float('Medical OPD')
 	fuel_other = fields.Float('Fuel/others')
 	overtime = fields.Float('Overtime')
-	sr_other = fields.Float('SR/other')
+	#sr_other = fields.Float('SR/other')
 	employee_number = fields.Char('Employee ID')
+	sr = fields.Float('SR')
+	other = fields.Float('Other')
+	sr_fund_ded = fields.Float('S.R Fund')
+	eobi = fields.Float('EOBI')
+	food = fields.Float('Food Expenses')
+	p_tax = fields.Float('Professional Tax')
+	v_running = fields.Float('Vehicle Running')
+	other_ded = fields.Float('Other')
+	mobile_expenses = fields.Float('Mobile Expenses')
+
 
 class hr_custom_employee(models.Model):
 	#_name = 'hr.custom.employee'
