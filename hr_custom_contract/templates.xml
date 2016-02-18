@@ -188,6 +188,9 @@
             <field name="inherit_id" ref="hr.view_employee_form"/>
             <field name="type">form</field>
             <field name="arch" type="xml">
+                <xpath expr="//field[@name='mobile_phone']" position="replace">
+                    <field name="mobile_num"/>
+                </xpath>
                 <xpath expr="//field[@name='work_location']" position="after">
                     <field name="joining_date"/>
                     <field name="blood_group"/>
@@ -376,6 +379,9 @@
                 <xpath expr="//field[@name='work_location']" position="attributes">
                     <attribute name="attrs">{'invisible': True}</attribute>
                 </xpath>
+                <!--<xpath expr="//field[@name='mobile_phone']" position="attributes">
+                    <attribute name="attrs">{'invisible': True}</attribute>
+                </xpath> --> 
                 <xpath expr="//group[@string='Active']" position="before">
                     <group string="Insurance">
                         <field name="health_insurance" string="Health Insurance"/>
