@@ -169,6 +169,7 @@
             <field name="type">form</field>
             <field name="arch" type="xml">
                 <xpath expr="//field[@name='work_location']" position="after">
+                    <field name="joining_date"/>
                     <field name="blood_group"/>
                 </xpath>
                 <xpath expr="//page[@string='HR Settings']" position="after">
@@ -206,7 +207,7 @@
             <field name="arch" type="xml">
                 <xpath expr="//page[@string='HR Settings']" position="after">
                     <page string="Email Set up" name="email_set_up">
-                        <group string='Desired E-Mail ID' name="group_top">
+                        <group string='Personal E-Mail ID' name="group_top">
                             <group name="group_left">
                                 <field name="first_email"/>
                                 <field name="email_password"/>
@@ -250,9 +251,6 @@
                                 </tree>
                             </field>
                         </group>
-                        <group>
-                            <field name="total_experience"/>
-                        </group>
                     </page>
                 </xpath>
             </field>
@@ -276,6 +274,9 @@
                                     <field name="total_experience_diff"/>
                                 </tree>
                             </field>
+                        </group>
+                        <group>
+                            <field name="total_experience"/>
                         </group>
                     </page>
                 </xpath>

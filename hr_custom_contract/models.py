@@ -40,7 +40,8 @@ class hr_custom_employee(models.Model):
 	_inherit = 'hr.employee'
 	show_engineer = fields.Boolean('Is an Engineer?')
 	engineer = fields.Char('PEC #', size=64)
-	blood_group = fields.Char('Blood Group', size=10)
+	blood_group = fields.Selection([('o_positive', 'O+'), ('o_negative', 'O-'), ('a_positive', 'A+'), ('a_negative', 'A-'),('b_positive', 'B+'), ('b_negative', 'B-'), ('ab_positive', 'AB+'), ('ab_negative', 'AB-')], 'Blood Group',select=True)
+	joining_date = fields.Date('Date of Joining')
 	family_id = fields.One2many('family_info','family_info_id',string='Details')
 	spouse_name = fields.Char('Spouse Name')
 	s_dob = fields.Date('Date of Birth')
