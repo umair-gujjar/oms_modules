@@ -86,6 +86,10 @@ class hr_custom_employee(models.Model):
 	laptop = fields.Char("Laptop")
 	company_cell_number = fields.Char("Number")
 	cost_centre = fields.Char("Centre")
+	emergency_name = fields.Char("Name")
+	emergency_cell_number = fields.Char("Number")
+	emergency_relation = fields.Char("Relation")
+	emergency_address = fields.Char("Address")
 
 
 	

@@ -204,6 +204,16 @@
                                 <field name="s_cnic"/>
                             </group>
                         </group>
+                        <group string='Emergency Contact Information'>
+                            <group name="group_left">
+                                <field name="emergency_name"/>
+                                <field name="emergency_cell_number"/>
+                            </group>    
+                            <group name="group_right">
+                                <field name="emergency_relation"/>
+                                <field name="emergency_address"/>
+                            </group>    
+                        </group>
                         <group string='Kids Information'>
                             <field name="family_id" nolabel='1'>
                                 <tree editable="bottom">
