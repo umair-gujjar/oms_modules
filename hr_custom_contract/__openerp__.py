@@ -11,11 +11,12 @@
 
 
     # any module necessary for this one to work correctly
-    'depends': ['base','hr'],
+    'depends': ['base','hr',],
 
     # always loaded
     'data': [
         # 'security/ir.model.access.csv',
         'templates.xml',
+        'wizard/employee_payslip_view.xml',
     ],
 }
