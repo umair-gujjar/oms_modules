@@ -6,7 +6,7 @@
 
         <record id="validate_employee_payslip_view" model="ir.ui.view">
             <field name="name">Employee Payslip</field>
-            <field name="model">employee_payslip.hr.payslip</field>
+            <field name="model">employee_payslip.hr.payslip1</field>
             <field name="arch" type="xml">
                 <form string="Employee Payslip">
                     <separator string="Employee Payslip"/>
@@ -23,7 +23,7 @@
         <record id="action_validate_employee_payslip_view" model="ir.actions.act_window">
             <field name="name">Employee Payslip</field>
             <field name="type">ir.actions.act_window</field>
-            <field name="res_model">employee_payslip.hr.payslip</field>
+            <field name="res_model">employee_payslip.hr.payslip1</field>
             <field name="view_type">form</field>
             <field name="view_mode">form</field>
             <field name="view_id" ref="validate_employee_payslip_view"/>
@@ -43,7 +43,7 @@
 
         <record id="validate_employee_payslip_view1" model="ir.ui.view">
             <field name="name">Employee Payslip Compute</field>
-            <field name="model">employee_payslip.hr.payslip</field>
+            <field name="model">employee_payslip.hr.payslip1</field>
             <field name="arch" type="xml">
                 <form string="Employee Payslip Compute">
                     <separator string="Employee Payslip"/>
@@ -60,7 +60,7 @@
         <record id="action_validate_employee_payslip_view1" model="ir.actions.act_window">
             <field name="name">Employee Payslip Compute</field>
             <field name="type">ir.actions.act_window</field>
-            <field name="res_model">employee_payslip.hr.payslip</field>
+            <field name="res_model">employee_payslip.hr.payslip1</field>
             <field name="view_type">form</field>
             <field name="view_mode">form</field>
             <field name="view_id" ref="validate_employee_payslip_view1"/>
