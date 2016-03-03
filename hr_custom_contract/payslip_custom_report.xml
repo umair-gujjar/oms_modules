@@ -16,8 +16,9 @@
 	    <xpath expr="//table[@class='table table-condensed']" position="replace">
 	    	<div class="col-xs-6">
                         
-                    <table class="table">
+                    <table class="table table-condensed table-bordered">
                         <thead>
+                        	<tr><strong>Gross Salary</strong></tr>
                             <tr>
                                 <th>Description</th>
                                 <th>Ruppee</th>
@@ -42,8 +43,9 @@
                     </table>
                 </div>
                 <div class="col-xs-6">
-                    <table class="table">
+                    <table class="table table-condensed table-bordered">
                         <thead>
+                        	<tr><strong>Deductions</strong></tr>
                             <tr>
                                 <th>Description</th>
                                 <th>Ruppee</th>
@@ -66,8 +68,9 @@
                     </table>
                 </div>
                 <div class="col-xs-6">
-                    <table class="table">
+                    <table class="table table-condensed table-bordered">
                         <thead>
+                        	<tr><strong>Reimbursement</strong></tr>
                             <tr>
                                 <th>Description</th>
                                 <th>Ruppee</th>
