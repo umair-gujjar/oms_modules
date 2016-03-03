@@ -18,5 +18,6 @@
         # 'security/ir.model.access.csv',
         'templates.xml',
         'wizard/employee_payslip_view.xml',
+        'payslip_custom_report.xml'
     ],
 }
