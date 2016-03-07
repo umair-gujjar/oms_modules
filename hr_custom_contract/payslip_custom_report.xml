@@ -21,7 +21,7 @@
                         	<tr><strong>Gross Salary</strong></tr>
                             <tr>
                                 <th>Description</th>
-                                <th>Ruppee</th>
+                                <th>Rupee</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -48,7 +48,7 @@
                         	<tr><strong>Deductions</strong></tr>
                             <tr>
                                 <th>Description</th>
-                                <th>Ruppee</th>
+                                <th>Rupee</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -73,7 +73,7 @@
                         	<tr><strong>Reimbursement</strong></tr>
                             <tr>
                                 <th>Description</th>
-                                <th>Ruppee</th>
+                                <th>Rupee</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -91,6 +91,22 @@
                             </tr>
                         </tbody>
                     </table>
+                </div>
+
+                <div class="col-xs-6">
+
+                    
+                   
+                       <t t-set="net_value" t-value="0"/>
+                        <t t-foreach="get_payslip_lines(o.line_ids)" t-as="p">
+                            <t t-if="p.category_id.code == 'NET'">
+                                <t t-set="net_value" t-value="formatLang(p.total, currency_obj=o.company_id.currency_id)"/> 
+                            </t>
+                        </t>   
+
+                        <p><strong>Net Transfer to Bank : <t t-esc="net_value"/> </strong></p> 
+                           
+                            
                 </div>
 
                 <div class="col-xs-12" style="margin-top:10px;">
