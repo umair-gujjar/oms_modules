@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+        <report 
+            id="hr_salary_bymonth"
+            string="Yearly Salary by Head"
+            model="hr.salary.employee.month"
+            report_type="qweb-pdf"
+            file="salary_sheet.report_hrsalarybymonth"
+            name="salary_sheet.report_hrsalarybymonth"/>
+
+        <report
+            auto="False" 
+            id="yearly_salary" 
+            model="yearly.salary.detail" 
+            name="salary_sheet.report_hryearlysalary" 
+            file="salary_sheet.report_hryearlysalary"
+            report_type="qweb-pdf"
+            string="Yearly Salary by Employee" /> 
+
+    </data>
+</openerp>

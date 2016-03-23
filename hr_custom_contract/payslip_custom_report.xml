@@ -28,7 +28,7 @@
                         
                             <t t-set="gross_salary" t-value="0"/>
                             <tr t-foreach="get_payslip_lines(o.line_ids)" t-as="p">
-                                <t t-if="p.category_id.code != 'DED' and p.category_id.code != 'RMB'">
+                                <t t-if="p.category_id.code != 'DED' and p.category_id.code != 'RMB' and p.category_id.code != 'NET'">
                                 <td><span t-field="p.name"/></td>
                                 <td><span t-esc="formatLang(p.total, currency_obj=o.company_id.currency_id)"/></td>
                                 <t t-set="gross_salary" t-value="gross_salary+p.total"/>
@@ -94,9 +94,6 @@
                 </div>
 
                 <div class="col-xs-6">
-
-                    
-                   
                        <t t-set="net_value" t-value="0"/>
                         <t t-foreach="get_payslip_lines(o.line_ids)" t-as="p">
                             <t t-if="p.category_id.code == 'NET'">
