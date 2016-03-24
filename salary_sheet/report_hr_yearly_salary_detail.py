@@ -64,29 +64,21 @@ class employees_yearly_salary_report(report_sxw.rml_parse):
         for c in range(0, (12-no_months)):
             mnth_name.append('')
             self.mnths.append('')
-
-        print 'umair'
-        print mnth_name       
+      
         return [mnth_name]
 
     def get_employee(self, form):
-        return self.pool.get('hr.employee').browse(self.cr,self.uid, form.get('employee_ids', []), context=self.context)
+        employes = self.pool.get('hr.payslip').browse(self.cr,self.uid, form.get('employee_ids', []), context=self.context)
+        return employes
 
     def get_employee_detail(self, obj):
-        self.allow_list = []
-        self.deduct_list = []
-        self.total = 0.00
-        gross = False
-        net = False
-
-        payslip_lines = self.cal_monthly_amt(obj.id)
-        print "uamirrrr"
-        print payslip_lines.name
+        payslip_lines = self.cal_monthly_amt(obj.employee_id)
         return payslip_lines
 
     def cal_monthly_amt(self, employee_id):
-        contract_obj = self.pool.get('hr.contract').browse(self.cr,self.uid, employee_id, context=self.context)
-        return contract_obj
+        contract_obj = self.pool.get('hr.payslip').search(self.cr,self.uid, [('employee_id','=',employee_id.id)], context=self.context)
+        res = self.pool.get('hr.payslip').browse(self.cr, self.uid, contract_obj)
+        return res
 
 class wrapped_report_payslip(osv.AbstractModel):
     _name = 'report.salary_sheet.report_hryearlysalary'

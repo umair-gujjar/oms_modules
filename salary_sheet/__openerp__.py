@@ -17,8 +17,6 @@
     'data': [
         'salary_report.xml',
         'views/report_hryearlysalary.xml',
-        'views/report_hrsalarybymonth.xml',
-        'wizard/hr_salary_employee_bymonth_view.xml',
         'wizard/hr_yearly_salary_detail_view.xml',
         
     ],

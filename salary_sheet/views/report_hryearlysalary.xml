@@ -3,59 +3,17 @@
 <data>
 <template id="report_hryearlysalary">
     <t t-call="report.html_container">
-      <t t-foreach="get_employee(data['form'])" t-as="employee">
-        <t t-call="report.internal_layout">
+        <t t-call="report.external_layout">
             <div class="page">
-                    <h2><span t-field="employee.company_id"/></h2>
-                    <p> From 
-                        <u><span t-esc="formatLang(data['form']['date_from'], date=True)"/></u> 
-                    To  <u><span t-esc="formatLang(data['form']['date_to'], date=True)"/></u> </p>
-                    <table class="table table-condensed table-bordered">
-                        <tr>
-                            <td><strong>Employee Code</strong></td>
-                            <td>
-                                <t t-if="employee.otherid">
-                                    <span t-field="employee.otherid"/>
-                                </t>
-                            </td>
-                            <td><strong>Employee Name</strong></td>
-                            <td>
-                                <t t-if="employee.name">
-                                    <span t-field="employee.name"/>
-                                </t>
-                            </td>
-                            <td><strong>Designation</strong></td>
-                            <td>
-                                <t t-if="employee.job_id">
-                                    <span t-field="employee.job_id.name"/>
-                                </t>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><strong>Cost Centre</strong></td>
-                            <td>
-                                <t t-if="employee.cost_centre">
-                                    <span t-field="employee.cost_centre"/>
-                                </t>
-                            </td>
-                            <td><strong>Days Worked</strong></td>
-                            <td>
-                                <t t-if="employee.address_home_id">
-                                    <span t-field="employee.address_home_id.name"/>
-                                </t>
-                            </td>
-                            <td><strong>Total Salary</strong></td>
-                            <td>
-                                <t t-if="employee.job_id">
-                                    <span t-field="employee.job_id"/>
-                                </t>
-                            </td>
-                        </tr>
-                    </table>
                     <table class="table table-condensed table-bordered">
                         <thead>
-                            <tr><strong>Salary Structure</strong></tr>
                             <tr>
+                                <th>Employee Code</th>
+                                <th>Employee Name</th>
+                                <th>Designation</th>
+                                <th>Cost Centre</th>
+                                <th>Days Worked</th>
+                                <th>Total Salary</th>
                                 <th>Basic Salary</th>
                                 <th>Medical</th>
                                 <th>House Rent</th>
@@ -63,51 +21,6 @@
                                 <th>Cola</th>
                                 <th>Bonus</th>
                                 <th>Gross Salary</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr t-foreach="get_employee_detail(employee)"  t-as="data" >
-                                <td> 
-                                    <t t-if="data.wage">
-                                        <span t-field="data.wage"/>
-                                    </t>
-                                </td>
-                                 <td> 
-                                    <t t-if="data.wage">
-                                        <span t-field="data.wage"/>
-                                    </t>
-                                </td>
-                                 <td> 
-                                    <t t-if="data.wage">
-                                        <span t-field="data.wage"/>
-                                    </t>
-                                </td>
-                                 <td> 
-                                    <t t-if="data.wage">
-                                        <span t-field="data.wage"/>
-                                    </t>
-                                </td>
-                                 <td> 
-                                    <t t-if="data.wage">
-                                        <span t-field="data.wage"/>
-                                    </t>
-                                </td>
-                                <td> 
-                                    <t t-if="data.bonus">
-                                        <span t-field="data.bonus"/>
-                                    </t>
-                                </td>
-                                <td> 
-                                    <span t-field="data.bonus"/>
-                                </td>
-                            </tr> 
-                            
-                        </tbody>
-                    </table>
-                    <table class="table table-condensed table-bordered">
-                        <thead>
-                            <tr><strong>Deductions</strong></tr>
-                            <tr>
                                 <th>Professional Tax</th>
                                 <th>S.R Fund</th>
                                 <th>EOBI</th>
@@ -116,55 +29,6 @@
                                 <th>Vechicle Running</th>
                                 <th>other</th>
                                 <th>Total Deduction</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr t-foreach="get_employee_detail(employee)"  t-as="data" >
-                                <td> 
-                                    <t t-if="data.p_tax">
-                                        <span t-field="data.p_tax"/>
-                                    </t>
-                                </td>
-                                 <td> 
-                                    <t t-if="data.sr_fund_ded">
-                                        <span t-field="data.sr_fund_ded"/>
-                                    </t>
-                                </td>
-                                 <td> 
-                                    <t t-if="data.eobi">
-                                        <span t-field="data.eobi"/>
-                                    </t>
-                                </td>
-                                 <td> 
-                                    <t t-if="data.loan_and_advance">
-                                        <span t-field="data.loan_and_advance"/>
-                                    </t>
-                                </td>
-                                 <td> 
-                                    <t t-if="data.food">
-                                        <span t-field="data.food"/>
-                                    </t>
-                                </td>
-                                <td> 
-                                    <t t-if="data.v_running">
-                                        <span t-field="data.v_running"/>
-                                    </t>
-                                </td>
-                                <td> 
-                                    <t t-if="data.other_ded">
-                                        <span t-field="data.other_ded"/>
-                                    </t>
-                                </td>
-                                <td> 
-                                    <span t-field="data.other_ded"/>
-                                </td>
-                            </tr>   
-                        </tbody>
-                    </table>
-                     <table class="table table-condensed table-bordered">
-                        <thead>
-                            <tr><strong>Reimburesment</strong></tr>
-                            <tr>
                                 <th>Medical OPD</th>
                                 <th>Fuel/others</th>
                                 <th>Overtime</th>
@@ -172,53 +36,194 @@
                                 <th>Mobile Expenses</th>
                                 <th>other</th>
                                 <th>Total</th>
+                                <th>Net Transfer</th>
                             </tr>
                         </thead>
                         <tbody>
-                           <tr t-foreach="get_employee_detail(employee)"  t-as="dat" >
-                                <td> 
-                                    <t t-if="dat.medical_opd">
-                                        <span t-field="dat.medical_opd"/>
+                            <t t-foreach="get_employee(data['form'])" t-as="employee">
+                            <tr t-foreach="get_employee_detail(employee)"  t-as="data" >
+                            <td>
+                                <t t-if="data.employee_id">
+                                    <span t-field="data.employee_id"/>
+                                </t>
+                            </td>
+                            <td>
+                                <t t-if="data.employee_id.name">
+                                    <span t-field="data.employee_id.name"/>
+                                </t>
+                            </td>
+                            <td>
+                                <t t-if="data.employee_id.job_id">
+                                    <span t-field="data.employee_id.job_id.name"/>
+                                </t>
+                            </td>
+                            <td>
+                                <t t-if="data.employee_id.cost_centre">
+                                    <span t-field="data.employee_id.cost_centre"/>
+                                </t>
+                            </td>
+                            <td>31</td>
+                            <td>
+                                <t t-if="data.employee_id.job_id">
+                                    <span t-field="data.employee_id.job_id"/>
+                                </t>
+                            </td>
+                            <td> 
+                                <t t-foreach="data.line_ids"  t-as="info">
+                                    <t t-if="info.category_id.code == 'BASIC'">
+                                        <span t-field="info.total"/>
                                     </t>
-                                </td>
-                                 <td> 
-                                    <t t-if="dat.fuel_other">
-                                        <span t-field="dat.fuel_other"/>
+                                </t>
+                            </td>
+                            <td> ----- </td>
+                            <td> 
+                                <t t-foreach="data.line_ids"  t-as="info">
+                                    <t t-if="info.category_id.code == 'HRA'">
+                                        <span t-field="info.total"/>
                                     </t>
-                                </td>
-                                 <td> 
-                                    <t t-if="dat.overtime">
-                                        <span t-field="dat.overtime"/>
+                                </t>
+                            </td>
+                            <td> 
+                                <t t-foreach="data.line_ids"  t-as="info">
+                                    <t t-if="info.category_id.code == 'UTILITIES'">
+                                        <span t-field="info.total"/>
                                     </t>
-                                </td>
-                                 <td> 
-                                    <t t-if="dat.sr">
-                                        <span t-field="dat.sr"/>
+                                </t>
+                            </td>
+                            <td> --------</td>
+                            <td> 
+                                <t t-foreach="data.line_ids"  t-as="info">
+                                    <t t-if="info.category_id.code == 'BONUS'">
+                                        <span t-field="info.total"/>
                                     </t>
-                                </td>
-                                 <td> 
-                                    <t t-if="dat.mobile_expenses">
-                                        <span t-field="dat.mobile_expenses"/>
+                                </t>
+                            </td>
+                            <td> 
+                                <t t-foreach="data.line_ids"  t-as="info">
+                                    <t t-if="info.category_id.code == 'GROSS'">
+                                        <span t-field="info.total"/>
                                     </t>
-                                </td>
-                                <td> 
-                                    <t t-if="dat.other">
-                                        <span t-field="dat.other"/>
+                                </t>
+                            </td>
+                            <td> 
+                                <t t-foreach="data.line_ids"  t-as="info">
+                                    <t t-if="info.category_id.code == 'PT'">
+                                        <span t-field="info.total"/>
                                     </t>
-                                </td>
-                                <td>  
-                                    <span t-field="dat.other"/>
-                                </td>
+                                </t>
+                            </td>
+                            <td> 
+                                <t t-foreach="data.line_ids"  t-as="info">
+                                    <t t-if="info.category_id.code == 'SRDED'">
+                                        <span t-field="info.total"/>
+                                    </t>
+                                </t>
+                            </td>
+                            <td> 
+                                <t t-foreach="data.line_ids"  t-as="info">
+                                    <t t-if="info.category_id.code == 'EOBI'">
+                                        <span t-field="info.total"/>
+                                    </t>
+                                </t>
+                            </td>
+                            <td> 
+                                <t t-foreach="data.line_ids"  t-as="info">
+                                    <t t-if="info.category_id.code == 'LOANDED'">
+                                        <span t-field="info.total"/>
+                                    </t>
+                                </t>
+                            </td>
+                            <td> 
+                                <t t-foreach="data.line_ids"  t-as="info">
+                                    <t t-if="info.category_id.code == 'FUEL'">
+                                        <span t-field="info.total"/>
+                                    </t>
+                                </t>
+                            </td>
+                            <td> 
+                                <t t-foreach="data.line_ids"  t-as="info">
+                                    <t t-if="info.category_id.code == 'VRUN'">
+                                        <span t-field="info.total"/>
+                                    </t>
+                                </t>
+                            </td>
+                            <td> 
+                                <t t-foreach="data.line_ids"  t-as="info">
+                                    <t t-if="info.category_id.code == 'OT'">
+                                        <span t-field="info.total"/>
+                                    </t>
+                                </t>
+                            </td>
+                            <td> 
+                                <t t-foreach="data.line_ids"  t-as="info">
+                                    <t t-if="info.category_id.code == 'TD'">
+                                        <span t-field="info.total"/>
+                                    </t>
+                                </t>
+                            </td>
+                            <td> 
+                                <t t-foreach="data.line_ids"  t-as="info">
+                                    <t t-if="info.category_id.code == 'MED'">
+                                        <span t-field="info.total"/>
+                                    </t>
+                                </t>
+                            </td>
+                            <td> 
+                                <t t-foreach="data.line_ids"  t-as="info">
+                                    <t t-if="info.category_id.code == 'FUEL'">
+                                        <span t-field="info.total"/>
+                                    </t>
+                                </t>
+                            </td>
+                            <td> 
+                                <t t-foreach="data.line_ids"  t-as="info">
+                                    <t t-if="info.category_id.code == 'OT'">
+                                        <span t-field="info.total"/>
+                                    </t>
+                                </t>
+                            </td>
+                            <td> 
+                                <t t-foreach="data.line_ids"  t-as="info">
+                                    <t t-if="info.category_id.code == 'SR'">
+                                        <span t-field="info.total"/>
+                                    </t>
+                                </t>
+                            </td>
+                            <td> 
+                                <t t-foreach="data.line_ids"  t-as="info">
+                                    <t t-if="info.category_id.code == 'MOBEXP'">
+                                        <span t-field="info.total"/>
+                                    </t>
+                                </t>
+                            </td>
+                            <td> 
+                                <t t-foreach="data.line_ids"  t-as="info">
+                                    <t t-if="info.category_id.code == 'FUEL'">
+                                        <span t-field="info.total"/>
+                                    </t>
+                                </t>
+                            </td>
+                            <td> 
+                                <t t-foreach="data.line_ids"  t-as="info">
+                                    <t t-if="info.category_id.code == 'TR'">
+                                        <span t-field="info.total"/>
+                                    </t>
+                                </t>
+                            </td>
+                            <td> 
+                                <t t-foreach="data.line_ids"  t-as="info">
+                                    <t t-if="info.category_id.code == 'NET'">
+                                        <span t-field="info.total"/>
+                                    </t>
+                                </t>
+                            </td>
                             </tr> 
+                            </t>
                         </tbody>
-                    </table>
-                    <div class="col-xs-4 pull-right" style="margin-top:30px;">
-                        <p class="text-right"><strong>Net Transfer : <t t-esc="net_value"/> </strong></p>
-                    </div>                        
-            </div>
-        </t>
-        </t>
+                    </table>           
+            </div> 
     </t>
+</t>
 </template>
 </data>
 </openerp>
