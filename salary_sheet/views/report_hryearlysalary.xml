@@ -5,9 +5,10 @@
     <t t-call="report.html_container">
         <t t-call="report.external_layout">
             <div class="page">
+                 <h2 >Salary Sheet For <strong style="text-decoration: underline;"><t t-esc="get_periods(data['form'])">  </t></strong></h2>
                     <table class="table table-condensed table-bordered">
                         <thead>
-                            <tr>
+                            <tr style="background-color:grey;border: 1px solid grey;">
                                 <th>Employee Code</th>
                                 <th>Employee Name</th>
                                 <th>Designation</th>
@@ -44,7 +45,7 @@
                             <tr t-foreach="get_employee_detail(employee)"  t-as="data" >
                             <td>
                                 <t t-if="data.employee_id">
-                                    <span t-field="data.employee_id"/>
+                                    <span t-field="data.employee_id.otherid"/>
                                 </t>
                             </td>
                             <td>
@@ -64,8 +65,10 @@
                             </td>
                             <td>31</td>
                             <td>
-                                <t t-if="data.employee_id.job_id">
-                                    <span t-field="data.employee_id.job_id"/>
+                               <t t-foreach="data.line_ids"  t-as="info">
+                                    <t t-if="info.category_id.code == 'TOTAL SALARY'">
+                                        <span t-field="info.total"/>
+                                    </t>
                                 </t>
                             </td>
                             <td> 
@@ -75,7 +78,13 @@
                                     </t>
                                 </t>
                             </td>
-                            <td> ----- </td>
+                            <td> 
+                                <t t-foreach="data.line_ids"  t-as="info">
+                                    <t t-if="info.category_id.code == 'MEDICAL'">
+                                        <span t-field="info.total"/>
+                                    </t>
+                                </t>
+                            </td>
                             <td> 
                                 <t t-foreach="data.line_ids"  t-as="info">
                                     <t t-if="info.category_id.code == 'HRA'">
@@ -90,7 +99,12 @@
                                     </t>
                                 </t>
                             </td>
-                            <td> --------</td>
+                            <td> <t t-foreach="data.line_ids"  t-as="info">
+                                    <t t-if="info.category_id.code == 'COLA'">
+                                        <span t-field="info.total"/>
+                                    </t>
+                                </t>
+                            </td>
                             <td> 
                                 <t t-foreach="data.line_ids"  t-as="info">
                                     <t t-if="info.category_id.code == 'BONUS'">

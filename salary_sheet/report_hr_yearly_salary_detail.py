@@ -40,32 +40,38 @@ class employees_yearly_salary_report(report_sxw.rml_parse):
         self.context = context
 
     def get_periods(self, form):
-        self.mnths = []
+        #self.mnths = []
 #       Get start year-month-date and end year-month-date
-        first_year = int(form['date_from'][0:4])
-        last_year = int(form['date_to'][0:4])
+        #first_year = int(form['date_from'][0:4])
+        #last_year = int(form['date_to'][0:4])
 
         first_month = int(form['date_from'][5:7])
-        last_month = int(form['date_to'][5:7])
-        no_months = (last_year-first_year) * 12 + last_month - first_month + 1
-        current_month = first_month
-        current_year = first_year
+        monthDict = {1:'January', 2:'February', 3:'March', 4:'April', 5:'May', 6:'June', 
+            7:'July', 8:'August', 9:'September', 10:'October', 11:'November', 12:'December'}
+
+        month = monthDict[first_month] 
+        print month   
+        #last_month = int(form['date_to'][5:7])
+        #no_months = (last_year-first_year) * 12 + last_month - first_month + 1
+        #current_month = first_month
+        #current_year = first_year
 
         #Get name of the months from integer
-        mnth_name = []
-        for count in range(0, no_months):
-            m = datetime.date(current_year, current_month, 1).strftime('%b')
-            mnth_name.append(m)
-            self.mnths.append(str(current_month) + '-' + str(current_year))
-            if current_month == 12:
-                current_month = 0
-                current_year = last_year
-            current_month = current_month + 1
-        for c in range(0, (12-no_months)):
-            mnth_name.append('')
-            self.mnths.append('')
+        #mnth_name = []
+        #for count in range(0, no_months):
+         #   m = datetime.date(current_year, current_month, 1).strftime('%b')
+          #  mnth_name.append(m)
+           # self.mnths.append(str(current_month) + '-' + str(current_year))
+            #if current_month == 12:
+                #current_month = 0
+                #current_year = last_year
+            #current_month = current_month + 1
+        #for c in range(0, (12-no_months)):
+            #mnth_name.append('')
+            #self.mnths.append('')
       
-        return [mnth_name]
+        #return [mnth_name]
+        return month
 
     def get_employee(self, form):
         employes = self.pool.get('hr.payslip').browse(self.cr,self.uid, form.get('employee_ids', []), context=self.context)
