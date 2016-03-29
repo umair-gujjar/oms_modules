@@ -151,6 +151,9 @@
                     <field name="bonus"/>
                     <field name="loan_and_advance"/>
                 </xpath>
+                <xpath expr="//field[@name='working_hours']" position="after">
+                    <field name="days_worked"/>
+                </xpath> 
                 <xpath expr="//page[@string='Work Permit']" position="after">
                     <page string="Reimbursement" name="reimbbursment">
                         <group>
@@ -375,6 +378,7 @@
                 </xpath>
                 <xpath expr="//field[@name='parent_id']" position="before">
                     <field name="cost_centre" string="Cost Centre"/>
+                    <field name="employee_status" string="Employee Status"/>
                 </xpath>
                 <xpath expr="//field[@name='work_location']" position="attributes">
                     <attribute name="attrs">{'invisible': True}</attribute>

@@ -11,7 +11,15 @@
 			<tr>
             <td><strong>Employee Code</strong></td>
             <td><span t-field="o.employee_id.otherid"/></td>
+            <td><strong>Employee Status</strong></td>
+            <td><span t-field="o.employee_id.employee_status"/></td>
             </tr>  
+            <tr>
+            <td><strong>Date Of Joining</strong></td>
+            <td><span t-field="o.employee_id.joining_date"/></td>
+            <td><strong>Cost Centre</strong></td>
+            <td><span t-field="o.employee_id.cost_centre"/></td>
+            </tr> 
 	    </xpath>
 	    <xpath expr="//table[@class='table table-condensed']" position="replace">
 	    	<div class="col-xs-6">

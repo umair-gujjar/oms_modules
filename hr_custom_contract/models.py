@@ -43,6 +43,7 @@ class hr_custom_contract(models.Model):
 	v_running = fields.Float('Vehicle Running')
 	other_ded = fields.Float('Other')
 	mobile_expenses = fields.Float('Mobile Expenses')
+	days_worked = fields.Char('Days Worked')
 
 
 class hr_custom_employee(models.Model):
@@ -86,6 +87,12 @@ class hr_custom_employee(models.Model):
 	laptop = fields.Char("Laptop")
 	company_cell_number = fields.Char("Number")
 	cost_centre = fields.Char("Centre")
+	employee_status = fields.Selection([
+            ('permanent', 'Permanent'),
+            ('parttime', 'Part Time'),
+            ('contract', 'Contract'),
+            ('other', 'Other'),
+            ], )
 	emergency_name = fields.Char("Name")
 	emergency_cell_number = fields.Char("Contact Number")
 	emergency_relation = fields.Char("Relation")
