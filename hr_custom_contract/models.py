@@ -28,6 +28,7 @@ class year_list(models.Model):
 class hr_custom_contract(models.Model):
 	_inherit = 'hr.contract'
 	bonus = fields.Float('Bonus')
+	ded_loan_and_advance = fields.Float('Loan & Advance')
 	loan_and_advance = fields.Float('Loan & Advance')
 	medical_opd = fields.Float('Medical OPD')
 	fuel_other = fields.Float('Fuel/others')
@@ -41,7 +42,7 @@ class hr_custom_contract(models.Model):
 	food = fields.Float('Food Expenses')
 	p_tax = fields.Float('Professional Tax')
 	v_running = fields.Float('Vehicle Running')
-	other_ded = fields.Float('Other')
+	other_ded = fields.Float('Deduction Other')
 	mobile_expenses = fields.Float('Mobile Expenses')
 	days_worked = fields.Char('Days Worked')
 

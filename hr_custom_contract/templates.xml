@@ -172,7 +172,7 @@
                             <field name="p_tax"/>
                             <field name="sr_fund_ded"/>
                             <field name="eobi"/>
-                            <field name="loan_and_advance"/>
+                            <field name="ded_loan_and_advance"/>
                             <field name="food"/>
                             <field name="v_running"/>
                             <field name="other_ded"/>
