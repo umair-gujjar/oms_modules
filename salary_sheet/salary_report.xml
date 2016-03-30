@@ -8,7 +8,7 @@
             name="salary_sheet.report_hryearlysalary" 
             file="salary_sheet.report_hryearlysalary"
             report_type="qweb-pdf"
-            string="Yearly Salary by Employee" /> 
+            string="Salary Sheet " /> 
 
     </data>
 </openerp>

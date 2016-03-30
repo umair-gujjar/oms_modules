@@ -9,8 +9,6 @@
     'author': "Tax Tech",
     'website': "http://www.taxtech.com",
 
-
-    # any module necessary for this one to work correctly
     'depends': ['base','hr_payroll',],
 
     # always loaded
