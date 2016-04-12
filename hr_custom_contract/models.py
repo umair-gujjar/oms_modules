@@ -98,7 +98,9 @@ class hr_custom_employee(models.Model):
 	emergency_cell_number = fields.Char("Contact Number")
 	emergency_relation = fields.Char("Relation")
 	emergency_address = fields.Char("Address")
-
+	_sql_constraints = [
+	('mobile_num', 'unique(mobile_num)', 'This Mobile number already exists!')
+	]
 
 	
 
