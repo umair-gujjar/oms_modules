@@ -35,6 +35,7 @@ class employees_yearly_salary_report(report_sxw.rml_parse):
             'get_employee_detail': self.get_employee_detail,
             'cal_monthly_amt': self.cal_monthly_amt,
             'get_periods': self.get_periods,
+            'get_payslip_lines_basic' : self.get_payslip_lines_basic,
         })
 
         self.context = context
@@ -50,7 +51,7 @@ class employees_yearly_salary_report(report_sxw.rml_parse):
             7:'July', 8:'August', 9:'September', 10:'October', 11:'November', 12:'December'}
 
         month = monthDict[first_month] 
-        print month   
+        #print month   
         #last_month = int(form['date_to'][5:7])
         #no_months = (last_year-first_year) * 12 + last_month - first_month + 1
         #current_month = first_month
@@ -76,6 +77,15 @@ class employees_yearly_salary_report(report_sxw.rml_parse):
     def get_employee(self, form):
         employes = self.pool.get('hr.payslip').browse(self.cr,self.uid, form.get('employee_ids', []), context=self.context)
         return employes
+
+    def get_payslip_lines_basic(self):
+        cost_centres = []
+        self.cr.execute("SELECT DISTINCT cost_centre FROM hr_employee;")
+        res_ids = self.cr.fetchall()
+        for i in res_ids:
+            cost_centres.append(i[0])
+        print cost_centres    
+        return cost_centres    
 
     def get_employee_detail(self, obj):
         payslip_lines = self.cal_monthly_amt(obj.employee_id)

@@ -71,45 +71,45 @@
                             <t t-set="other_other" t-value="0.0" />
                             <t t-set="total" t-value="0.0" />
                             <t t-set="net" t-value="0.0" />
-                            <t t-foreach="get_employee(data['form'])" t-as="employee">
-                            <tr t-foreach="get_employee_detail(employee)"  t-as="data" >
+                            <t t-foreach="get_employee(data['form'])" t-as="employee">   
+                            <tr t-foreach="get_employee_detail(employee)"  t-as="data" > 
                             <td>
                                 <t t-esc="i"/>
                                 <t t-set="i" t-value="i+1"/>
                             </td>
                             <td>
                                 <t t-if="data.employee_id">
-                                    <span t-esc="data.employee_id.otherid"/>
+                                    <span t-field="data.employee_id.otherid"/>
                                 </t>
                             </td>
                             <td>
                                 <t t-if="data.employee_id.name">
-                                    <span t-esc="data.employee_id.name"/>
+                                    <span t-field="data.employee_id.name"/>
                                 </t>
                             </td>
                             <td>
                                 <t t-if="data.employee_id.job_id">
-                                    <span t-esc="data.employee_id.job_id.name"/>
+                                    <span t-field="data.employee_id.job_id.name"/>
                                 </t>
                             </td>
                             <td>
                                 <t t-if="data.employee_id.cost_centre">
-                                    <span t-esc="data.employee_id.cost_centre"/>
+                                    <span t-field="data.employee_id.cost_centre"/>
                                 </t>
                             </td>
                             <td>31</td>
                             <td>
                                <t t-foreach="data.line_ids"  t-as="info">
-                                    <t t-if="info.category_id.code == 'TOTAL SALARY'">
-                                        <span t-esc="info.total"/>
+                                    <t t-if="info.code == 'TOTAL SALARY'">
+                                        <span t-field="info.total"/>
                                         <t t-set="total_salary" t-value="total_salary+info.total" />
                                     </t>
                                 </t>
                             </td>
                             <td> 
                                 <t t-foreach="data.line_ids"  t-as="info">
-                                    <t t-if="info.category_id.code == 'BASIC'">
-                                        <span t-esc="info.total"/>
+                                    <t t-if="info.code == 'BASIC'">
+                                        <span t-field="info.total"/>
                                         <t t-set="basic_salary" t-value="basic_salary+info.total" />
                                     </t>
                                 </t>
@@ -117,45 +117,45 @@
                             <td> 
                                 <t t-foreach="data.line_ids"  t-as="info">
                                     <t t-if="info.category_id.code == 'MEDICAL'">
-                                        <span t-esc="info.total"/>
+                                        <span t-field="info.total"/>
                                         <t t-set="medical" t-value="medical+info.total" />
                                     </t>
                                 </t>
                             </td>
                             <td> 
                                 <t t-foreach="data.line_ids"  t-as="info">
-                                    <t t-if="info.category_id.code == 'HRA'">
-                                        <span t-esc="info.total"/>
+                                    <t t-if="info.code == 'HRA'">
+                                        <span t-field="info.total"/>
                                         <t t-set="house_rent" t-value="house_rent+info.total" />
                                     </t>
                                 </t>
                             </td>
                             <td> 
                                 <t t-foreach="data.line_ids"  t-as="info">
-                                    <t t-if="info.category_id.code == 'UTILITIES'">
-                                        <span t-esc="info.total"/>
+                                    <t t-if="info.code == 'UTILITIES'">
+                                        <span t-field="info.total"/>
                                         <t t-set="utility" t-value="utility+info.total" />
                                     </t>
                                 </t>
                             </td>
                             <td> <t t-foreach="data.line_ids"  t-as="info">
-                                    <t t-if="info.category_id.code == 'COLA'">
-                                        <span t-esc="info.total"/>
+                                    <t t-if="info.code == 'COLA'">
+                                        <span t-field="info.total"/>
                                         <t t-set="cola" t-value="cola+info.total" />
                                     </t>
                                 </t>
                             </td>
                             <td> 
                                 <t t-foreach="data.line_ids"  t-as="info">
-                                    <t t-if="info.category_id.code == 'GROSS'">
-                                        <span t-esc="info.total"/>
+                                    <t t-if="info.code == 'GROSS'">
+                                        <span t-field="info.total"/>
                                         <t t-set="gross_salary" t-value="gross_salary+info.total" />
                                     </t>
                                 </t>
                             </td>
                             <td> 
                                 <t t-foreach="data.line_ids"  t-as="info">
-                                    <t t-if="info.category_id.code == 'BONUS'">
+                                    <t t-if="info.code == 'BONUS'">
                                         <span t-esc="info.total"/>
                                         <t t-set="bonus" t-value="bonus+info.total" />
                                     </t>
@@ -163,7 +163,7 @@
                             </td>
                             <td> 
                                 <t t-foreach="data.line_ids"  t-as="info">
-                                    <t t-if="info.category_id.code == 'PF'">
+                                    <t t-if="info.code == 'PF'">
                                         <span t-esc="info.total"/>
                                         <t t-set="pf" t-value="pf+info.total" />
                                     </t>
@@ -171,7 +171,7 @@
                             </td>
                             <td> 
                                 <t t-foreach="data.line_ids"  t-as="info">
-                                    <t t-if="info.category_id.code == 'TAX'">
+                                    <t t-if="info.code == 'TAX'">
                                         <span t-esc="info.total"/>
                                         <t t-set="tax" t-value="tax+info.total" />
                                     </t>
@@ -179,7 +179,7 @@
                             </td>
                             <td> 
                                 <t t-foreach="data.line_ids"  t-as="info">
-                                    <t t-if="info.category_id.code == 'PT'">
+                                    <t t-if="info.code == 'PT'">
                                         <span t-esc="info.total"/>
                                         <t t-set="p_tax" t-value="p_tax+info.total" />
                                     </t>
@@ -187,7 +187,7 @@
                             </td>
                             <td> 
                                 <t t-foreach="data.line_ids"  t-as="info">
-                                    <t t-if="info.category_id.code == 'SRDED'">
+                                    <t t-if="info.code == 'SRDED'">
                                         <span t-esc="info.total"/>
                                         <t t-set="sr_fund" t-value="sr_fund+info.total" />
                                     </t>
@@ -195,7 +195,7 @@
                             </td>
                             <td> 
                                 <t t-foreach="data.line_ids"  t-as="info">
-                                    <t t-if="info.category_id.code == 'EOBI'">
+                                    <t t-if="info.code == 'EOBI'">
                                         <span t-esc="info.total"/>
                                         <t t-set="eobi" t-value="eobi+info.total" />
                                     </t>
@@ -203,7 +203,7 @@
                             </td>
                             <td> 
                                 <t t-foreach="data.line_ids"  t-as="info">
-                                    <t t-if="info.category_id.code == 'LOANDED'">
+                                    <t t-if="info.code == 'LOANDED'">
                                         <span t-esc="info.total"/>
                                         <t t-set="loan" t-value="loan+info.total" />
                                     </t>
@@ -211,7 +211,7 @@
                             </td>
                             <td> 
                                 <t t-foreach="data.line_ids"  t-as="info">
-                                    <t t-if="info.category_id.code == 'FE'">
+                                    <t t-if="info.code == 'FE'">
                                         <span t-esc="info.total"/>
                                         <t t-set="loan" t-value="loan+info.total" />
                                     </t>
@@ -219,7 +219,7 @@
                             </td>
                             <td> 
                                 <t t-foreach="data.line_ids"  t-as="info">
-                                    <t t-if="info.category_id.code == 'VRUN'">
+                                    <t t-if="info.code == 'VRUN'">
                                         <span t-esc="info.total"/>
                                         <t t-set="vehicle_run" t-value="vehicle_run+info.total" />
                                     </t>
@@ -227,7 +227,7 @@
                             </td>
                             <td> 
                                 <t t-foreach="data.line_ids"  t-as="info">
-                                    <t t-if="info.category_id.code == 'OD'">
+                                    <t t-if="info.code == 'OD'">
                                         <span t-esc="info.total"/>
                                         <t t-set="other" t-value="other+info.total" />
                                     </t>
@@ -235,7 +235,7 @@
                             </td>
                             <td> 
                                 <t t-foreach="data.line_ids"  t-as="info">
-                                    <t t-if="info.category_id.code == 'TD'">
+                                    <t t-if="info.code == 'TD'">
                                         <span t-esc="info.total"/>
                                         <t t-set="total_ded" t-value="total_ded+info.total" />
                                     </t>
@@ -243,7 +243,7 @@
                             </td>
                             <td> 
                                 <t t-foreach="data.line_ids"  t-as="info">
-                                    <t t-if="info.category_id.code == 'MED'">
+                                    <t t-if="info.code == 'MED'">
                                         <span t-esc="info.total"/>
                                         <t t-set="med_opd" t-value="med_opd+info.total" />
                                     </t>
@@ -251,7 +251,7 @@
                             </td>
                             <td> 
                                 <t t-foreach="data.line_ids"  t-as="info">
-                                    <t t-if="info.category_id.code == 'FUEL'">
+                                    <t t-if="info.code == 'FUEL'">
                                         <span t-esc="info.total"/>
                                         <t t-set="fuel_other" t-value="fuel_other+info.total" />
                                     </t>
@@ -259,7 +259,7 @@
                             </td>
                             <td> 
                                 <t t-foreach="data.line_ids"  t-as="info">
-                                    <t t-if="info.category_id.code == 'OT'">
+                                    <t t-if="info.code == 'OT'">
                                         <span t-esc="info.total"/>
                                         <t t-set="overtime" t-value="overtime+info.total" />
                                     </t>
@@ -267,7 +267,7 @@
                             </td>
                             <td> 
                                 <t t-foreach="data.line_ids"  t-as="info">
-                                    <t t-if="info.category_id.code == 'SR'">
+                                    <t t-if="info.code == 'SR'">
                                         <span t-esc="info.total"/>
                                         <t t-set="sr" t-value="sr+info.total" />
                                     </t>
@@ -275,7 +275,7 @@
                             </td>
                             <td> 
                                 <t t-foreach="data.line_ids"  t-as="info">
-                                    <t t-if="info.category_id.code == 'MOBEXP'">
+                                    <t t-if="info.code == 'MOBEXP'">
                                         <span t-esc="info.total"/>
                                         <t t-set="mob_exp" t-value="mob_exp+info.total" />
                                     </t>
@@ -283,7 +283,7 @@
                             </td>
                             <td> 
                                 <t t-foreach="data.line_ids"  t-as="info">
-                                    <t t-if="info.category_id.code == 'OR'">
+                                    <t t-if="info.code == 'OR'">
                                         <span t-esc="info.total"/>
                                         <t t-set="total_ded" t-value="total_ded+info.total" />
                                     </t>
@@ -291,7 +291,7 @@
                             </td>
                             <td> 
                                 <t t-foreach="data.line_ids"  t-as="info">
-                                    <t t-if="info.category_id.code == 'TR'">
+                                    <t t-if="info.code == 'TR'">
                                         <span t-esc="info.total"/>
                                         <t t-set="total" t-value="total+info.total" />
                                     </t>
@@ -299,7 +299,7 @@
                             </td>
                             <td> 
                                 <t t-foreach="data.line_ids"  t-as="info">
-                                    <t t-if="info.category_id.code == 'NET'">
+                                    <t t-if="info.code == 'NET'">
                                         <span t-esc="info.total"/>
                                         <t t-set="net" t-value="net+info.total" />
                                     </t>
