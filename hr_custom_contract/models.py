@@ -152,3 +152,16 @@ class employee_experience(models.Model):
 	experience_to = fields.Date('Experience To')
 	total_experience_diff = fields.Char('Total')
 	employee_experience_id = fields.Many2one('hr.employee','Employee Experience')
+
+
+#custom fields in hr.paylsip
+
+class hr_custom_contract_payslip(models.Model):
+	_inherit = 'hr.payslip'
+	cost_centre = fields.Char("Cost Centre")
+	@api.model
+	def create(self, values):
+		all_recs = self.env['hr.employee'].search([('id','=',values['employee_id'])])
+		values['cost_centre'] = all_recs.cost_centre
+		result = super(hr_custom_contract_payslip, self).create(values)
+		return result
