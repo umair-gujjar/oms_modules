@@ -35,7 +35,6 @@ class employees_yearly_salary_report(report_sxw.rml_parse):
             'get_employee_detail': self.get_employee_detail,
             'cal_monthly_amt': self.cal_monthly_amt,
             'get_periods': self.get_periods,
-            'get_payslip_lines_basic' : self.get_payslip_lines_basic,
         })
 
         self.context = context
@@ -43,6 +42,8 @@ class employees_yearly_salary_report(report_sxw.rml_parse):
     def get_periods(self, form):
         #self.mnths = []
 #       Get start year-month-date and end year-month-date
+        print form['date_from']
+        print form['date_to']
         first_year = int(form['date_from'][0:4])
         #last_year = int(form['date_to'][0:4])
 
@@ -51,48 +52,46 @@ class employees_yearly_salary_report(report_sxw.rml_parse):
             7:'July', 8:'August', 9:'September', 10:'October', 11:'November', 12:'December'}
 
         month = monthDict[first_month] 
-        #print month   
-        #last_month = int(form['date_to'][5:7])
-        #no_months = (last_year-first_year) * 12 + last_month - first_month + 1
-        #current_month = first_month
-        #current_year = first_year
-
-        #Get name of the months from integer
-        #mnth_name = []
-        #for count in range(0, no_months):
-         #   m = datetime.date(current_year, current_month, 1).strftime('%b')
-          #  mnth_name.append(m)
-           # self.mnths.append(str(current_month) + '-' + str(current_year))
-            #if current_month == 12:
-                #current_month = 0
-                #current_year = last_year
-            #current_month = current_month + 1
-        #for c in range(0, (12-no_months)):
-            #mnth_name.append('')
-            #self.mnths.append('')
-      
-        #return [mnth_name]
         return month+' '+str(first_year)
-
+   
     def get_employee(self, form):
-        employes = self.pool.get('hr.payslip').browse(self.cr,self.uid, form.get('employee_ids', []), context=self.context)
-        return employes
+        employes_test = self.pool.get('hr.payslip').browse(self.cr,self.uid, form.get('employee_ids', []), context=self.context)
+        employes_idsss = []
+        employes_idssss = []
+        info = []
+        for emp in employes_test:
+            employes_idssss.append(emp.id)
+            employes_idsss.append(emp.employee_id.id)
 
-    def get_payslip_lines_basic(self):
+        check_ids = ",".join(str(x) for x in employes_idssss)
         cost_centres = []
-        self.cr.execute("SELECT DISTINCT cost_centre FROM hr_employee;")
+        self.cr.execute("SELECT DISTINCT cost_centre FROM hr_payslip WHERE id in  ("+check_ids+");")
         res_ids = self.cr.fetchall()
         for i in res_ids:
-            cost_centres.append(i[0])
-        print cost_centres    
-        return cost_centres    
+            cost_centres.append(i[0])        
+        for cost in cost_centres:
+            contract_objss = self.pool.get('hr.payslip').search(self.cr,self.uid, [('cost_centre','=',cost),('id','in',employes_idssss)], context=self.context)
+            resss = self.pool.get('hr.payslip').browse(self.cr, self.uid, contract_objss)
+            empp_test_ids = []
+            for ree in resss:
+                empp_test_ids.append(ree.id)
+            emp_id_data =  list(set(empp_test_ids))   
+            data = {
+            'cost_centre' :cost,
+            'employee_idss' : list(set(empp_test_ids))
+            }
+            info.append(data)
+        return info   
 
     def get_employee_detail(self, obj):
-        payslip_lines = self.cal_monthly_amt(obj.employee_id)
-        return payslip_lines
+        #payslip_lines = self.cal_monthly_amt(obj)
+        #return payslip_lines
+        contract_obj = self.pool.get('hr.payslip').search(self.cr,self.uid, [('id','=',obj)], context=self.context)
+        res = self.pool.get('hr.payslip').browse(self.cr, self.uid, contract_obj)
+        return res
 
     def cal_monthly_amt(self, employee_id):
-        contract_obj = self.pool.get('hr.payslip').search(self.cr,self.uid, [('employee_id','=',employee_id.id)], context=self.context)
+        contract_obj = self.pool.get('hr.payslip').search(self.cr,self.uid, [('employee_id','=',employee_id)], context=self.context)
         res = self.pool.get('hr.payslip').browse(self.cr, self.uid, contract_obj)
         return res
 
@@ -101,4 +100,3 @@ class wrapped_report_payslip(osv.AbstractModel):
     _inherit = 'report.abstract_report'
     _template = 'salary_sheet.report_hryearlysalary'
     _wrapped_report_class = employees_yearly_salary_report
-
