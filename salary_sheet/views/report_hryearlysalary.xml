@@ -71,8 +71,14 @@
                             <t t-set="other_other" t-value="0.0" />
                             <t t-set="total" t-value="0.0" />
                             <t t-set="net" t-value="0.0" />
-                            <t t-foreach="get_employee(data['form'])" t-as="employee">   
-                            <tr t-foreach="get_employee_detail(employee)"  t-as="data" > 
+                            <t t-foreach="get_employee(data['form'])" t-as="employee">
+                                <tr style="font-weight: bold; background-color: #D3D3D3; font-size: 15px;"> 
+                                    <td colspan="32">
+                                        <span t-esc="employee['cost_centre']"/>
+                                    </td>
+                                </tr>
+
+                            <tr t-foreach="get_employee_detail(employee['employee_idss'])"  t-as="data" > 
                             <td>
                                 <t t-esc="i"/>
                                 <t t-set="i" t-value="i+1"/>
